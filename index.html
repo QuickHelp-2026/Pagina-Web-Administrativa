@@ -559,7 +559,7 @@ body.light-mode{
 
 /* PROGRESS */
 .progress-bar{height:6px;background:var(--black3);border-radius:3px;overflow:hidden;margin-top:8px;}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--yellow2));border-radius:3px;transition:.8s;}
+.progress-fit{height:100%;background:linear-gradient(90deg,var(--yellow),var(--yellow2));border-radius:3px;transition:.8s;}
 
 /* TAG */
 .tag{
@@ -576,7 +576,11 @@ body.light-mode{
   <div class="login-lines"></div>
   <div class="login-box">
     <div class="login-logo">
-      <img src="https://i.ibb.co/DfnfdXpf/LOGO-BLACK-QUICK-e1717304365618-removebg-preview.png" alt="QUICK" style="filter:invert(1)brightness(2);">
+      <img 
+  src="https://i.ibb.co/DfnfdXpf/LOGO-BLACK-QUICK-e1717304365618-removebg-preview.png" 
+  alt="QUICK"
+  class="quick-logo"
+>
     </div>
     <div class="login-title">Portal Administrativo</div>
     <div class="login-sub">Acceso exclusivo para personal QUICK</div>
@@ -598,7 +602,7 @@ body.light-mode{
     </div>
     <button class="btn-primary" onclick="doLogin()"><i class="fa fa-sign-in-alt" style="margin-right:8px;"></i>Ingresar al Portal</button>
     <div class="login-error" id="loginError"><i class="fa fa-exclamation-circle"></i> Credenciales incorrectas</div>
-    <div class="login-demo">
+    <div class="login-demo" style="display:none;">
       <p>CREDENCIALES DE DEMO</p>
       <span>🔑 Admin: <strong>admin</strong> / <strong>quick2024</strong></span>
       <span>👤 Coordinador: <strong>coord</strong> / <strong>quick123</strong></span>
@@ -613,7 +617,11 @@ body.light-mode{
 <!-- SIDEBAR -->
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <img src="https://i.ibb.co/DfnfdXpf/LOGO-BLACK-QUICK-e1717304365618-removebg-preview.png" class="sidebar-logo" style="filter:invert(1)brightness(2);" alt="QUICK">
+    <img 
+  src="https://i.ibb.co/DfnfdXpf/LOGO-BLACK-QUICK-e1717304365618-removebg-preview.png" 
+  alt="QUICK"
+  class="quick-logo"
+>
     <button class="sidebar-toggle" onclick="toggleSidebar()" title="Colapsar menú"><i class="fa fa-bars"></i></button>
   </div>
   <div class="sidebar-nav">
