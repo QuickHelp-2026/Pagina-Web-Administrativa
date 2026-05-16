@@ -1180,6 +1180,8 @@ let fechas=load('fechas',[
 
 /// ═══════════ LOGIN ═══════════
 
+// ═══════════ LOGIN ═══════════
+
 const SESSION_TIME = 15 * 60 * 1000; // 15 minutos
 
 function doLogin(){
@@ -1196,6 +1198,41 @@ function doLogin(){
       role:USERS[u].role,
       name:USERS[u].name
     };
+
+    // GUARDAR SESIÓN
+    localStorage.setItem('quickUser',JSON.stringify(currentUser));
+    localStorage.setItem('quickLoginTime',Date.now());
+
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('app').classList.add('active');
+
+    initApp();
+
+  }else{
+
+    err.style.display='block';
+
+    setTimeout(()=>{
+      err.style.display='none';
+    },3000);
+
+  }
+
+}
+
+// ENTER PARA INGRESAR
+document.addEventListener('keydown',e=>{
+
+  if(
+    e.key==='Enter' &&
+    document.getElementById('loginScreen').style.display!=='none'
+  ){
+    doLogin();
+  }
+
+});
+
+// LOGOUT
 function doLogout(){
 
   currentUser=null;
@@ -1211,7 +1248,8 @@ function doLogout(){
   document.getElementById('loginPass').value='';
 
 }
-    // VALIDAR SESIÓN AL RECARGAR
+
+// VALIDAR SESIÓN AL RECARGAR
 window.addEventListener('load',()=>{
 
   const savedUser=localStorage.getItem('quickUser');
@@ -1242,33 +1280,6 @@ window.addEventListener('load',()=>{
   }
 
 });
-    // GUARDAR SESIÓN
-    localStorage.setItem('quickUser',JSON.stringify(currentUser));
-    localStorage.setItem('quickLoginTime',Date.now());
-
-    document.getElementById('loginScreen').style.display='none';
-    document.getElementById('app').classList.add('active');
-
-    initApp();
-
-  }else{
-
-    err.style.display='block';
-    setTimeout(()=>err.style.display='none',3000);
-
-  }
-
-}
-
-document.addEventListener('keydown',e=>{
-  if(
-    e.key==='Enter' &&
-    document.getElementById('loginScreen').style.display!=='none'
-  ){
-    doLogin();
-  }
-});
-
 // ═══════════ INIT APP ═══════════
 function initApp(){
   const isAdmin=currentUser.role==='admin';
