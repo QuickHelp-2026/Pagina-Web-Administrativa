@@ -1306,19 +1306,41 @@ function updateDate(){
 }
 
 function updateStats(){
-  document.getElementById('statLinks').textContent=linksAdmin.length+linksGestion.length;
-  document.getElementById('statStaff').textContent=staff.length;
-  document.getElementById('statDocs').textContent=documents.length;
-  const now=new Date();
-  const bdays=fechas.filter(f=>{
-    if(f.type!=='cumpleanos')return false;
-    const fd=new Date(f.date+'T00:00:00');
-    return fd.getMonth()===now.getMonth();
-  }).length;
-  document.getElementById('statBday').textContent=bdays;
-  document.getElementById('statBday').parentElement.previousElementSibling.querySelector('.stat-value').textContent=bdays;
-}
 
+  const statLinks=document.getElementById('statLinks');
+  const statStaff=document.getElementById('statStaff');
+  const statDocs=document.getElementById('statDocs');
+  const statBday=document.getElementById('statBday');
+
+  if(statLinks){
+    statLinks.textContent=linksAdmin.length+linksGestion.length;
+  }
+
+  if(statStaff){
+    statStaff.textContent=staff.length;
+  }
+
+  if(statDocs){
+    statDocs.textContent=documents.length;
+  }
+
+  const now=new Date();
+
+  const bdays=fechas.filter(f=>{
+
+    if(f.type!=='cumpleanos') return false;
+
+    const fd=new Date(f.date+'T00:00:00');
+
+    return fd.getMonth()===now.getMonth();
+
+  }).length;
+
+  if(statBday){
+    statBday.textContent=bdays;
+  }
+
+}
 // ═══════════ NAVIGATION ═══════════
 const sectionTitles={
   'dashboard':'DASHBOARD','links-admin':'LINKS ADMINISTRATIVOS','links-gestion':'LINKS DE GESTIÓN',
