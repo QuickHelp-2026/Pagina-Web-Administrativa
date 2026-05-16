@@ -1126,6 +1126,7 @@ let currentUser=null;
 let sidebarCollapsed=false;
 let currentWeekOffset=0;
 let darkMode=true;
+const SESSION_TIME = 15 * 60 * 1000; // 15 minutos
 
 // ═══════════ DATA (LocalStorage) ═══════════
 function load(key,def){
@@ -1177,27 +1178,96 @@ let fechas=load('fechas',[
   {id:4,type:'cumpleanos',name:'Luis Martínez',date:'1988-06-30',desc:''},
 ]);
 
-// ═══════════ LOGIN ═══════════
+/// ═══════════ LOGIN ═══════════
+
+const SESSION_TIME = 15 * 60 * 1000; // 15 minutos
+
 function doLogin(){
+
   const u=document.getElementById('loginUser').value.trim();
   const p=document.getElementById('loginPass').value;
   const r=document.getElementById('loginRole').value;
   const err=document.getElementById('loginError');
-  if(USERS[u]&&USERS[u].pass===p){
-    currentUser={user:u,role:USERS[u].role,name:USERS[u].name};
-    document.getElementById('loginScreen').style.display='none';
-    document.getElementById('app').classList.add('active');
-    initApp();
-  }else{err.style.display='block';setTimeout(()=>err.style.display='none',3000);}
-}
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('loginScreen').style.display!=='none')doLogin();});
 
+  if(USERS[u] && USERS[u].pass===p){
+
+    currentUser={
+      user:u,
+      role:USERS[u].role,
+      name:USERS[u].name
+    };
 function doLogout(){
+
   currentUser=null;
+
+  // BORRAR SESIÓN
+  localStorage.removeItem('quickUser');
+  localStorage.removeItem('quickLoginTime');
+
   document.getElementById('app').classList.remove('active');
   document.getElementById('loginScreen').style.display='flex';
-  document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';
+
+  document.getElementById('loginUser').value='';
+  document.getElementById('loginPass').value='';
+
 }
+    // VALIDAR SESIÓN AL RECARGAR
+window.addEventListener('load',()=>{
+
+  const savedUser=localStorage.getItem('quickUser');
+  const loginTime=localStorage.getItem('quickLoginTime');
+
+  if(savedUser && loginTime){
+
+    const now=Date.now();
+
+    // VALIDAR TIEMPO
+    if(now - parseInt(loginTime) < SESSION_TIME){
+
+      currentUser=JSON.parse(savedUser);
+
+      document.getElementById('loginScreen').style.display='none';
+      document.getElementById('app').classList.add('active');
+
+      initApp();
+
+    }else{
+
+      // SESIÓN EXPIRADA
+      localStorage.removeItem('quickUser');
+      localStorage.removeItem('quickLoginTime');
+
+    }
+
+  }
+
+});
+    // GUARDAR SESIÓN
+    localStorage.setItem('quickUser',JSON.stringify(currentUser));
+    localStorage.setItem('quickLoginTime',Date.now());
+
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('app').classList.add('active');
+
+    initApp();
+
+  }else{
+
+    err.style.display='block';
+    setTimeout(()=>err.style.display='none',3000);
+
+  }
+
+}
+
+document.addEventListener('keydown',e=>{
+  if(
+    e.key==='Enter' &&
+    document.getElementById('loginScreen').style.display!=='none'
+  ){
+    doLogin();
+  }
+});
 
 // ═══════════ INIT APP ═══════════
 function initApp(){
