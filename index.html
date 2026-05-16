@@ -74,12 +74,16 @@ body{background:var(--black);color:var(--white);font-family:var(--font);min-heig
 .login-sub{color:var(--grey);font-size:13px;text-align:center;margin-bottom:32px;}
 .form-group{margin-bottom:18px;}
 .form-group label{display:block;font-size:12px;font-weight:600;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
-.form-group input,.form-group select,.form-group textarea{
+.form-group input,
+.form-group select,
+.form-group textarea{
   width:100%;background:var(--black3);border:1.5px solid var(--grey2);border-radius:var(--radius-sm);
   padding:12px 16px;color:var(--white);font-family:var(--font);font-size:14px;outline:none;
   transition:.25s;
 }
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--yellow);box-shadow:0 0 0 3px var(--yellow-dim);}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:var(--yellow);box-shadow:0 0 0 3px var(--yellow-dim);}
 .form-group textarea{resize:vertical;min-height:80px;}
 .btn-primary{
   width:100%;padding:14px;background:var(--yellow);color:var(--black);
@@ -505,7 +509,8 @@ body{background:var(--black);color:var(--white);font-family:var(--font);min-heig
   display:block;padding:8px 12px;border-radius:var(--radius-sm);
   font-size:13px;cursor:pointer;transition:.2s;color:var(--grey);margin-bottom:2px;
 }
-.reg-nav-item:hover,.reg-nav-item.active{background:var(--yellow-dim);color:var(--yellow);}
+.reg-nav-item:hover,
+.reg-nav-item.active{background:var(--yellow-dim);color:var(--yellow);}
 .reg-content{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:32px;}
 .reg-content h2{font-family:var(--font-head);font-size:22px;letter-spacing:1px;color:var(--yellow);margin:28px 0 12px;border-bottom:1px solid var(--border);padding-bottom:8px;}
 .reg-content h2:first-child{margin-top:0;}
@@ -527,10 +532,12 @@ body.light-mode{
   :root{--sidebar-w:260px;}
   .sidebar{transform:translateX(-100%);}
   .sidebar.mobile-open{transform:translateX(0);}
-  .main,.topbar{margin-left:0!important;left:0!important;}
+  .main,
+  .topbar{margin-left:0!important;left:0!important;}
   .topbar{left:0;}
   .hamburger{display:flex!important;}
-  .grid-4,.grid-3{grid-template-columns:1fr 1fr;}
+  .grid-4,
+  .grid-3{grid-template-columns:1fr 1fr;}
 }
 
 .hamburger{
