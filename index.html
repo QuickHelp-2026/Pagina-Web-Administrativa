@@ -10,24 +10,29 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root{
-  --black:#0a0a0a;
-  --black2:#111111;
-  --black3:#181818;
-  --black4:#222222;
+  --black:#0d0d12;
+  --black2:#12121a;
+  --black3:#1a1a25;
+  --black4:#222230;
   --yellow:#F5C400;
   --yellow2:#FFD700;
-  --yellow-dim:rgba(245,196,0,0.12);
-  --yellow-glow:rgba(245,196,0,0.35);
+  --yellow-dim:rgba(245,196,0,0.10);
+  --yellow-glow:rgba(245,196,0,0.28);
+  --accent:#7c4dff;
+  --teal:#00c9a7;
+  --coral:#ff6b6b;
   --white:#FFFFFF;
-  --white2:#F0F0F0;
-  --grey:#888888;
-  --grey2:#444444;
-  --card-bg:#161616;
-  --border:rgba(245,196,0,0.18);
-  --radius:14px;
-  --radius-sm:8px;
-  --shadow:0 8px 32px rgba(0,0,0,0.55);
-  --shadow-y:0 4px 24px rgba(245,196,0,0.18);
+  --white2:#E8E9F2;
+  --grey:#8890aa;
+  --grey2:#363650;
+  --card-bg:#171722;
+  --card-bg2:#1e1e2c;
+  --border:rgba(255,255,255,0.07);
+  --border-y:rgba(245,196,0,0.20);
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow:0 8px 32px rgba(0,0,0,0.6);
+  --shadow-y:0 4px 24px rgba(245,196,0,0.15);
   --font-head:'Bebas Neue',sans-serif;
   --font:'DM Sans',sans-serif;
   --sidebar-w:260px;
@@ -554,10 +559,36 @@ body{background:var(--black);color:var(--white);font-family:var(--font);min-heig
 
 /* DARK/LIGHT toggle */
 body.light-mode{
-  --black:#f0f0f0;--black2:#e0e0e0;--black3:#d0d0d0;--black4:#c0c0c0;
-  --card-bg:#ffffff;--white:#111111;--white2:#222222;--grey:#666666;--grey2:#999999;
-  --border:rgba(0,0,0,0.12);--shadow:0 4px 20px rgba(0,0,0,0.12);
+  --black:#f2f3f8;--black2:#e8eaf2;--black3:#dde0ee;--black4:#cdd1e8;
+  --card-bg:#ffffff;--card-bg2:#f8f9ff;
+  --white:#1a1d30;--white2:#2c3060;--grey:#6a70a0;--grey2:#9097c0;
+  --border:rgba(60,70,160,0.14);--border-y:rgba(245,196,0,0.35);
+  --shadow:0 4px 20px rgba(60,70,140,0.10);
 }
+body.light-mode .sidebar{background:linear-gradient(180deg,#e8eaf2,#dde0ee)!important;}
+body.light-mode .topbar{background:rgba(242,243,248,0.92)!important;border-color:rgba(60,70,160,0.12)!important;}
+body.light-mode .card,body.light-mode .link-card,body.light-mode .stat-card,
+body.light-mode .staff-card,body.light-mode .bday-card,body.light-mode .reg-content,
+body.light-mode .reg-nav,body.light-mode .file-tree,body.light-mode .modal{
+  border-color:rgba(60,70,160,0.18)!important;
+  box-shadow:0 2px 14px rgba(60,70,160,0.08)!important;
+}
+body.light-mode .search-bar{background:#f0f2ff;border-color:rgba(60,70,160,0.22)!important;}
+body.light-mode .search-global input,body.light-mode .form-group input,
+body.light-mode .form-group select,body.light-mode .form-group textarea{
+  background:#f0f2ff!important;border-color:rgba(60,70,160,0.22)!important;color:#1a1d30!important;
+}
+body.light-mode .filter-btn{background:#e8eaf2;border-color:rgba(60,70,160,0.25);color:#6a70a0;}
+body.light-mode .btn-icon{background:#e8eaf2;border-color:rgba(60,70,160,0.2);color:#6a70a0;}
+body.light-mode .cal-day{background:#fff;border:1px solid rgba(60,70,160,0.08);}
+body.light-mode .cal-day-header{background:#e8eaf2;color:#6a70a0;}
+body.light-mode .cal-grid{background:#dde0ee;}
+body.light-mode .nav-item{color:#6a70a0;}
+body.light-mode .schedule-grid{background:#dde0ee;}
+body.light-mode .sch-cell,body.light-mode .sch-person{background:#fff;border:1px solid rgba(60,70,160,0.08);}
+body.light-mode .sch-header{background:#e8eaf2;}
+body.light-mode .hsq-fixed-card{background:#fff!important;border-color:rgba(60,70,160,0.18)!important;}
+body.light-mode .qa-card{background:#f0f2ff!important;}
 
 /* MOBILE */
 @media(max-width:768px){
@@ -628,6 +659,45 @@ body{
 .grid-4{
   overflow:hidden;
 }
+
+/* ── CALENDARIO MEJORADO ── */
+.cal-dots{display:flex;flex-wrap:wrap;gap:2px;margin-top:3px;min-height:10px;}
+.cal-event-pill{font-size:8px;font-weight:700;padding:1px 4px;border-radius:3px;display:inline-flex;align-items:center;}
+.cal-nav-btn{background:none;border:1px solid var(--grey2);color:var(--grey);width:26px;height:26px;border-radius:6px;cursor:pointer;font-size:10px;display:inline-flex;align-items:center;justify-content:center;transition:.2s;}
+.cal-nav-btn:hover{border-color:var(--yellow);color:var(--yellow);}
+
+/* ── STAT CARDS COLOREADAS ── */
+.stat-card:nth-child(2) .stat-icon{background:rgba(124,77,255,0.12)!important;color:#a97fff!important;border-color:rgba(124,77,255,0.2)!important;}
+.stat-card:nth-child(3) .stat-icon{background:rgba(0,201,167,0.12)!important;color:#00c9a7!important;border-color:rgba(0,201,167,0.2)!important;}
+.stat-card:nth-child(4) .stat-icon{background:rgba(255,107,107,0.12)!important;color:#ff6b6b!important;border-color:rgba(255,107,107,0.2)!important;}
+.stat-card:nth-child(2) .stat-value{color:#a97fff;}
+.stat-card:nth-child(3) .stat-value{color:#00c9a7;}
+.stat-card:nth-child(4) .stat-value{color:#ff6b6b;}
+.stat-card{box-shadow:0 2px 14px rgba(0,0,0,0.3);}
+.stat-card:hover{border-color:var(--border-y)!important;}
+
+/* ── CARD MEJORAS ── */
+.card{box-shadow:0 2px 16px rgba(0,0,0,0.28);}
+.link-card{box-shadow:0 2px 12px rgba(0,0,0,0.22);}
+.staff-card{box-shadow:0 2px 16px rgba(0,0,0,0.28);overflow:hidden;}
+.sidebar{background:linear-gradient(180deg,var(--black2) 0%,var(--black) 100%)!important;}
+.qa-card{background:var(--card-bg2,#1e1e2c)!important;box-shadow:0 2px 12px rgba(0,0,0,0.2);}
+.hsq-fixed-card{background:linear-gradient(135deg,var(--card-bg2,#1e1e2c),var(--card-bg))!important;border-color:var(--border)!important;}
+.hsq-fixed-card:hover{border-color:var(--border-y)!important;box-shadow:var(--shadow-y)!important;transform:translateY(-2px)!important;}
+.announcement{background:linear-gradient(135deg,rgba(245,196,0,0.07),rgba(124,77,255,0.04))!important;border-color:rgba(245,196,0,0.25)!important;}
+
+/* ── IA CHAT ── */
+@keyframes blink{0%,100%{opacity:.25;}50%{opacity:1;}}
+#iaMessages::-webkit-scrollbar{width:4px;}
+#iaMessages::-webkit-scrollbar-thumb{background:var(--grey2);border-radius:2px;}
+.ia-msg-user{display:flex;justify-content:flex-end;margin-bottom:10px;}
+.ia-msg-bot{display:flex;justify-content:flex-start;margin-bottom:10px;}
+.ia-bubble-user{max-width:82%;padding:10px 14px;border-radius:14px 14px 2px 14px;background:var(--yellow);color:var(--black);font-size:13px;line-height:1.6;}
+.ia-bubble-bot{max-width:88%;padding:10px 14px;border-radius:14px 14px 14px 2px;background:var(--black3);color:var(--white);font-size:13px;line-height:1.6;white-space:pre-wrap;}
+
+/* ── CONFIG SECTION ── */
+.cfg-block{background:var(--black3);border-radius:var(--radius-sm);padding:16px;border:1px solid var(--border);margin-bottom:14px;}
+.cfg-block-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;margin-bottom:12px;}
 </style>
 </head>
 <body>
@@ -700,6 +770,8 @@ body{
     <div class="nav-item" onclick="goTo('area-admin')"><i class="fa fa-users"></i><span>Área Administrativa</span></div>
     <div class="nav-item" onclick="goTo('descansos')"><i class="fa fa-moon"></i><span>Descansos</span></div>
     <div class="nav-item" onclick="goTo('fechas')"><i class="fa fa-birthday-cake"></i><span>Fechas Especiales</span><div class="nav-badge" id="bdayBadge">0</div></div>
+    <div class="nav-section-label">SISTEMA</div>
+    <div class="nav-item" id="navConfig" onclick="goTo('configuracion')"><i class="fa fa-cog"></i><span>Configuración</span></div>
   </div>
   <div class="sidebar-footer">
     <div class="user-avatar" id="userAvatarSide">A</div>
@@ -765,8 +837,21 @@ body{
   <div class="grid-2">
     <!-- CALENDARIO -->
     <div class="card">
-      <h3 style="font-family:var(--font-head);font-size:18px;letter-spacing:1px;margin-bottom:16px;color:var(--yellow);">CALENDARIO <span id="calMonthYear" style="font-size:14px;color:var(--grey);font-family:var(--font);font-weight:400;"></span></h3>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px;flex-wrap:wrap;">
+        <h3 style="font-family:var(--font-head);font-size:18px;letter-spacing:1px;color:var(--yellow);margin:0;">CALENDARIO</h3>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <button class="cal-nav-btn" onclick="calMonthOffset--;renderCalendar()" title="Mes anterior"><i class="fa fa-chevron-left"></i></button>
+          <span id="calMonthYear" style="font-size:12px;color:var(--grey);font-weight:600;min-width:115px;text-align:center;"></span>
+          <button class="cal-nav-btn" onclick="calMonthOffset++;renderCalendar()" title="Mes siguiente"><i class="fa fa-chevron-right"></i></button>
+          <button class="cal-nav-btn" onclick="calMonthOffset=0;renderCalendar()" title="Hoy" style="padding:0 7px;width:auto;font-size:9px;letter-spacing:.5px;">HOY</button>
+        </div>
+      </div>
       <div class="cal-grid" id="calGrid"></div>
+      <div style="display:flex;gap:14px;margin-top:10px;flex-wrap:wrap;">
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--grey);"><span style="width:7px;height:7px;border-radius:50%;background:var(--yellow);display:inline-block;"></span>Fechas especiales</span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--grey);"><span class="cal-event-pill" style="background:rgba(245,196,0,0.2);color:var(--yellow);border:1px solid rgba(245,196,0,0.4);">D</span>Descanso</span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--grey);"><span class="cal-event-pill" style="background:rgba(34,221,84,0.2);color:#22dd54;border:1px solid rgba(34,221,84,0.4);">T</span>Trabajo</span>
+      </div>
     </div>
     <!-- NOVEDADES -->
     <div class="card">
@@ -806,15 +891,21 @@ body{
   </div>
   <!-- FIXED LINKS -->
   <div class="grid-2" style="margin-bottom:24px;">
-    <div class="hsq-fixed-card" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSf3rosI_g_xERGgk2q7lqjGR621-zmHBjIETlEqOcrEP2enxA/viewform')">
-      <i class="fa fa-motorcycle"></i>
-      <div><h3>Preoperacional</h3><p> Registro preoperacional</p></div>
-      <i class="fa fa-external-link-alt" style="margin-left:auto;font-size:14px;color:var(--grey);"></i>
+    <div style="position:relative;">
+      <div class="hsq-fixed-card" onclick="openHsqFixed('preop')">
+        <i class="fa fa-motorcycle"></i>
+        <div><h3>Preoperacional</h3><p id="hsqDesc_preop">Registro preoperacional</p></div>
+        <i class="fa fa-external-link-alt" style="margin-left:auto;font-size:14px;color:var(--grey);"></i>
+      </div>
+      <button class="btn-icon" id="btnEditPreop" onclick="editHsqFixed('preop');event.stopPropagation();" title="Editar link" style="position:absolute;top:8px;right:8px;display:none;"><i class="fa fa-pen"></i></button>
     </div>
-    <div class="hsq-fixed-card" onclick="window.open('https://forms.gle/YeqaDuqV9kNzoEDx5')">
-      <i class="fa fa-soap"></i>
-      <div><h3>Lavado y Desinfección de Motos</h3><p>Registro de limpieza y desinfección</p></div>
-      <i class="fa fa-external-link-alt" style="margin-left:auto;font-size:14px;color:var(--grey);"></i>
+    <div style="position:relative;">
+      <div class="hsq-fixed-card" onclick="openHsqFixed('limpieza')">
+        <i class="fa fa-soap"></i>
+        <div><h3>Lavado y Desinfección de Motos</h3><p id="hsqDesc_limpieza">Registro de limpieza y desinfección</p></div>
+        <i class="fa fa-external-link-alt" style="margin-left:auto;font-size:14px;color:var(--grey);"></i>
+      </div>
+      <button class="btn-icon" id="btnEditLimpieza" onclick="editHsqFixed('limpieza');event.stopPropagation();" title="Editar link" style="position:absolute;top:8px;right:8px;display:none;"><i class="fa fa-pen"></i></button>
     </div>
   </div>
   <div class="search-bar"><i class="fa fa-search"></i><input type="text" placeholder="Buscar capacitaciones y anuncios HSQ..." oninput="filterHSQ(this.value)"></div>
@@ -846,7 +937,10 @@ body{
 <section class="section" id="sec-reglamento">
   <div class="section-header">
     <div><div class="section-title">Reglamento <span>Interno</span></div><div class="section-sub">Normativa interna de QUICK</div></div>
-    <a href="https://drive.google.com/file/d/1wolcz6VH6okNrTBcgvqnaLRlMoughqlP/view" target="_blank" class="btn-add" style="text-decoration:none;"><i class="fa fa-download"></i> Descargar PDF</a>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <button class="btn-add" onclick="openModal('modalRegIA')" style="background:linear-gradient(135deg,#7c4dff,#5533bb);"><i class="fa fa-robot"></i> Consultar IA</button>
+      <a href="https://drive.google.com/file/d/1wolcz6VH6okNrTBcgvqnaLRlMoughqlP/view" target="_blank" class="btn-add" style="text-decoration:none;background:var(--black3);color:var(--yellow);border:1.5px solid var(--border-y);"><i class="fa fa-download"></i> Descargar PDF</a>
+    </div>
   </div>
   <div class="search-bar" style="margin-bottom:16px;">
     <i class="fa fa-search"></i>
@@ -902,7 +996,65 @@ body{
   <div class="grid-3" id="fechasGrid"></div>
 </section>
 
+<!-- ══ CONFIGURACIÓN ══ -->
+<section class="section" id="sec-configuracion">
+  <div class="section-header">
+    <div><div class="section-title">⚙️ <span>Configuración</span></div><div class="section-sub">Administración del portal QUICK</div></div>
+  </div>
+  <div class="grid-2" style="gap:24px;">
+    <div class="card">
+      <h3 style="font-family:var(--font-head);font-size:18px;letter-spacing:1px;margin-bottom:18px;color:var(--yellow);"><i class="fa fa-lock" style="margin-right:8px;"></i>CAMBIAR CONTRASEÑAS</h3>
+      <div class="cfg-block">
+        <div class="cfg-block-label">Administrador</div>
+        <div class="form-group" style="margin-bottom:10px;"><label>Nueva contraseña</label><input type="password" id="cfgPassAdmin" placeholder="Mínimo 4 caracteres"></div>
+        <div class="form-group" style="margin-bottom:10px;"><label>Confirmar</label><input type="password" id="cfgPassAdminC" placeholder="Repetir contraseña"></div>
+        <button class="btn-save" onclick="changePassword('admin')" style="width:100%;"><i class="fa fa-save" style="margin-right:6px;"></i>Actualizar Admin</button>
+      </div>
+      <div class="cfg-block">
+        <div class="cfg-block-label">Coordinador</div>
+        <div class="form-group" style="margin-bottom:10px;"><label>Nueva contraseña</label><input type="password" id="cfgPassCoord" placeholder="Mínimo 4 caracteres"></div>
+        <div class="form-group" style="margin-bottom:10px;"><label>Confirmar</label><input type="password" id="cfgPassCoordC" placeholder="Repetir contraseña"></div>
+        <button class="btn-save" onclick="changePassword('coord')" style="width:100%;"><i class="fa fa-save" style="margin-right:6px;"></i>Actualizar Coordinador</button>
+      </div>
+      <div class="cfg-block">
+        <div class="cfg-block-label">Visualizador</div>
+        <div class="form-group" style="margin-bottom:10px;"><label>Nueva contraseña</label><input type="password" id="cfgPassViewer" placeholder="Mínimo 4 caracteres"></div>
+        <div class="form-group" style="margin-bottom:10px;"><label>Confirmar</label><input type="password" id="cfgPassViewerC" placeholder="Repetir contraseña"></div>
+        <button class="btn-save" onclick="changePassword('viewer')" style="width:100%;"><i class="fa fa-save" style="margin-right:6px;"></i>Actualizar Visualizador</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="font-family:var(--font-head);font-size:18px;letter-spacing:1px;margin-bottom:18px;color:var(--yellow);"><i class="fa fa-bell" style="margin-right:8px;"></i>ALERTAS Y NOTIFICACIONES</h3>
+      <div class="cfg-block">
+        <div class="cfg-block-label">Destinatarios de alertas</div>
+        <div id="cfgEmailList" style="margin-bottom:10px;"></div>
+        <div style="display:flex;gap:8px;">
+          <input type="email" id="cfgNewEmail" placeholder="correo@quick.com" style="flex:1;background:var(--black);border:1.5px solid var(--grey2);border-radius:var(--radius-sm);padding:9px 14px;color:var(--white);font-family:var(--font);font-size:13px;outline:none;">
+          <button class="btn-save" onclick="addAlertEmail()" style="flex-shrink:0;"><i class="fa fa-plus"></i></button>
+        </div>
+      </div>
+      <div class="cfg-block">
+        <div class="cfg-block-label">Disparar alerta manual</div>
+        <div class="form-group" style="margin-bottom:10px;"><label>Tipo</label>
+          <select id="cfgAlertType" onchange="toggleCustomMsg(this.value)">
+            <option value="cumpleanos">🎂 Cumpleaños próximos (30 días)</option>
+            <option value="capacitacion">📚 Capacitaciones pendientes</option>
+            <option value="custom">✏️ Mensaje personalizado</option>
+          </select>
+        </div>
+        <div id="cfgCustomMsgGroup" style="display:none;" class="form-group"><label>Mensaje</label><textarea id="cfgCustomMsg" placeholder="Escribe el mensaje..." style="min-height:70px;"></textarea></div>
+        <button class="btn-save" onclick="sendAlert()" style="width:100%;"><i class="fa fa-paper-plane" style="margin-right:6px;"></i>Enviar Alerta</button>
+      </div>
+      <div class="cfg-block">
+        <div class="cfg-block-label">Próximas alertas (30 días)</div>
+        <div id="cfgUpcomingAlerts"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main><!-- /main -->
+
 </div><!-- /app -->
 
 <!-- ══════════════ MODALS ══════════════ -->
@@ -1024,8 +1176,26 @@ body{
       <div class="form-group"><label>Celular Corporativo</label><input type="text" id="stCell" placeholder="+57 300 000 0000"></div>
       <div class="form-group"><label>ID Computador</label><input type="text" id="stPC" placeholder="PC-001"></div>
       <div class="form-group"><label>Línea Corporativa</label><input type="text" id="stLine" placeholder="Ext. 101"></div>
-      <div class="form-group"><label>Foto URL (opcional)</label><input type="text" id="stPhoto" placeholder="https://..."></div>
-      <div class="form-group"><label>Info Adicional</label><textarea id="stExtra" placeholder="Observaciones..."></textarea></div>
+      <div class="form-group"><label>Foto del Colaborador</label>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+          <img id="stPhotoPreview" src="" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--yellow);display:none;" alt="">
+          <div id="stPhotoPlaceholder" style="width:56px;height:56px;border-radius:50%;background:var(--black3);border:2px dashed var(--grey2);display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:22px;flex-shrink:0;"><i class="fa fa-user"></i></div>
+          <label style="cursor:pointer;background:var(--black3);border:1.5px solid var(--grey2);border-radius:var(--radius-sm);padding:8px 14px;font-size:12px;display:flex;align-items:center;gap:7px;transition:.2s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='var(--grey2)'">
+            <i class="fa fa-upload" style="color:var(--yellow);"></i>Subir foto
+            <input type="file" accept="image/*" style="display:none;" onchange="previewPhoto(this,'stPhotoPreview','stPhotoPlaceholder','stPhoto')">
+          </label>
+        </div>
+        <input type="hidden" id="stPhoto">
+      </div>
+      <div class="form-group"><label>Imagen de Portada / Ilustración</label>
+        <img id="stCoverPreview" src="" style="width:100%;max-height:100px;object-fit:cover;border-radius:8px;border:1.5px solid var(--yellow);display:none;margin-bottom:8px;" alt="">
+        <label style="cursor:pointer;background:var(--black3);border:1.5px solid var(--grey2);border-radius:var(--radius-sm);padding:8px 14px;font-size:12px;display:flex;align-items:center;gap:7px;transition:.2s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='var(--grey2)'">
+          <i class="fa fa-image" style="color:var(--yellow);"></i>Subir imagen de portada
+          <input type="file" accept="image/*" style="display:none;" onchange="previewPhoto(this,'stCoverPreview',null,'stCover')">
+        </label>
+        <input type="hidden" id="stCover">
+      </div>
+      <div class="form-group"><label>Info Adicional</label><textarea id="stExtra" placeholder="Observaciones... (puedes usar saltos de línea)"></textarea></div>
     </div>
     <div class="modal-footer">
       <button class="btn-cancel" onclick="closeModal('modalStaff')">Cancelar</button>
@@ -1094,6 +1264,81 @@ body{
       <button class="btn-cancel" onclick="closeModal('modalConfirm')">Cancelar</button>
       <button class="btn-save" style="background:#ff4d4d;" id="confirmBtn">Eliminar</button>
     </div>
+  </div>
+</div>
+
+<!-- Modal: Detalle día calendario -->
+<div class="modal-overlay" id="modalCalDay">
+  <div class="modal" style="max-width:420px;">
+    <div class="modal-header"><div class="modal-title">DETALLE DEL DÍA</div><button class="modal-close" onclick="closeModal('modalCalDay')"><i class="fa fa-times"></i></button></div>
+    <div class="modal-body" id="calDayContent" style="padding-top:8px;"></div>
+    <div class="modal-footer"><button class="btn-cancel" onclick="closeModal('modalCalDay')">Cerrar</button></div>
+  </div>
+</div>
+
+<!-- Modal: Editor de artículo reglamento -->
+<div class="modal-overlay" id="modalRegEdit">
+  <div class="modal" style="max-width:660px;">
+    <div class="modal-header"><div class="modal-title">EDITAR ARTÍCULO</div><button class="modal-close" onclick="closeModal('modalRegEdit')"><i class="fa fa-times"></i></button></div>
+    <div class="modal-body">
+      <input type="hidden" id="regEditId">
+      <div class="form-group"><label>Título</label><input type="text" id="regEditTitle" placeholder="Artículo X – Título"></div>
+      <div class="form-group"><label>Contenido (los saltos de línea se respetan)</label><textarea id="regEditContent" style="min-height:260px;" placeholder="Escribe el contenido..."></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal('modalRegEdit')">Cancelar</button>
+      <button class="btn-save" onclick="saveRegEdit()"><i class="fa fa-save" style="margin-right:6px;"></i>Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: IA Reglamento -->
+<div class="modal-overlay" id="modalRegIA">
+  <div class="modal" style="max-width:600px;">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#7c4dff,#5533bb);display:flex;align-items:center;justify-content:center;font-size:16px;">🤖</div>
+        <div class="modal-title">ASISTENTE DE REGLAMENTO</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modalRegIA')"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="modal-body" style="padding-bottom:0;">
+      <div id="iaMessages" style="max-height:320px;overflow-y:auto;margin-bottom:12px;padding-right:4px;display:flex;flex-direction:column;gap:0;"></div>
+      <div style="display:flex;gap:8px;padding-bottom:4px;">
+        <input type="text" id="iaInput" placeholder="Ej: ¿Qué pasa si un mensajero no se presenta?" style="flex:1;background:var(--black3);border:1.5px solid var(--grey2);border-radius:var(--radius-sm);padding:10px 14px;color:var(--white);font-family:var(--font);font-size:13px;outline:none;" onkeydown="if(event.key==='Enter')askIA()">
+        <button class="btn-save" onclick="askIA()" id="iaSendBtn" style="flex-shrink:0;padding:10px 16px;"><i class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <div class="modal-footer" style="padding-top:10px;">
+      <span style="font-size:11px;color:var(--grey);"><i class="fa fa-info-circle" style="margin-right:4px;"></i>Consulta el Reglamento Interno de QUICK</span>
+      <button class="btn-cancel" onclick="closeModal('modalRegIA')">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Editar link HSQ fijo -->
+<div class="modal-overlay" id="modalHsqLink">
+  <div class="modal" style="max-width:440px;">
+    <div class="modal-header"><div class="modal-title">EDITAR LINK HSQ</div><button class="modal-close" onclick="closeModal('modalHsqLink')"><i class="fa fa-times"></i></button></div>
+    <div class="modal-body">
+      <input type="hidden" id="hsqLinkKey">
+      <div class="form-group"><label>Nombre</label><input type="text" id="hsqLinkTitle" placeholder="Ej: Preoperacional"></div>
+      <div class="form-group"><label>URL del formulario</label><input type="text" id="hsqLinkUrl" placeholder="https://forms.gle/..."></div>
+      <div class="form-group"><label>Descripción</label><input type="text" id="hsqLinkDesc" placeholder="Descripción breve..."></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal('modalHsqLink')">Cancelar</button>
+      <button class="btn-save" onclick="saveHsqFixed()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Detalle fecha especial -->
+<div class="modal-overlay" id="modalFechaDetail">
+  <div class="modal" style="max-width:380px;">
+    <div class="modal-header"><div class="modal-title" id="fechaDetailTitle">DETALLE</div><button class="modal-close" onclick="closeModal('modalFechaDetail')"><i class="fa fa-times"></i></button></div>
+    <div class="modal-body" id="fechaDetailContent"></div>
+    <div class="modal-footer"><button class="btn-cancel" onclick="closeModal('modalFechaDetail')">Cerrar</button></div>
   </div>
 </div>
 
@@ -1181,7 +1426,6 @@ let fechas=load('fechas',[
 /// ═══════════ LOGIN ═══════════ ///
 
 function doLogin(){
-alert('LOGIN FUNCIONA');
   const u=document.getElementById('loginUser').value.trim();
   const p=document.getElementById('loginPass').value;
   const r=document.getElementById('loginRole').value;
@@ -1215,18 +1459,6 @@ alert('LOGIN FUNCIONA');
   }
 
 }
-
-// ENTER PARA INGRESAR
-document.addEventListener('keydown',e=>{
-
-  if(
-    e.key==='Enter' &&
-    document.getElementById('loginScreen').style.display!=='none'
-  ){
-    doLogin();
-  }
-
-});
 
 // LOGOUT
 function doLogout(){
@@ -1345,7 +1577,7 @@ function updateStats(){
 const sectionTitles={
   'dashboard':'DASHBOARD','links-admin':'LINKS ADMINISTRATIVOS','links-gestion':'LINKS DE GESTIÓN',
   'hsq':'HSQ','documentos':'DOCUMENTOS','reglamento':'REGLAMENTO INTERNO',
-  'area-admin':'ÁREA ADMINISTRATIVA','descansos':'DESCANSOS','fechas':'FECHAS ESPECIALES'
+  'area-admin':'ÁREA ADMINISTRATIVA','descansos':'DESCANSOS','fechas':'FECHAS ESPECIALES','configuracion':'CONFIGURACIÓN'
 };
 function goTo(section){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
@@ -1660,32 +1892,72 @@ const reglamentoData=[
   {id:'r12',title:'Artículo 12 – Disposiciones Finales',content:`El presente Reglamento Interno de Trabajo entrará en vigor una vez aprobado y publicado en los medios habituales de comunicación interna de QUICK.\n\nCualquier aspecto no contemplado en este reglamento se regirá por las normas del Código Sustantivo del Trabajo y las demás disposiciones legales aplicables en Colombia.\n\nQUICK se reserva el derecho de modificar, actualizar o ampliar el presente reglamento, previa notificación a los trabajadores con la debida antelación y cumpliendo los procedimientos legales establecidos.\n\nLa aceptación y firma del contrato de trabajo implica el conocimiento y aceptación del presente Reglamento Interno por parte del trabajador.`},
 ];
 
+let reglamentoCustom=load('reglamentoCustom',null);
+function getRegData(){return reglamentoCustom||reglamentoData;}
 function loadReglamento(){
   const nav=document.getElementById('regNav');
   const content=document.getElementById('regContent');
+  const data=getRegData();
   nav.innerHTML='<div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--grey);margin-bottom:10px;padding:0 4px;">CONTENIDO</div>';
   content.innerHTML='';
-  reglamentoData.forEach((art,i)=>{
+  data.forEach(function(art,i){
     const navItem=document.createElement('div');
     navItem.className='reg-nav-item'+(i===0?' active':'');
     navItem.textContent=art.title;
-    navItem.onclick=()=>{document.querySelectorAll('.reg-nav-item').forEach(n=>n.classList.remove('active'));navItem.classList.add('active');document.getElementById(art.id).scrollIntoView({behavior:'smooth',block:'start'});};
+    navItem.onclick=function(){
+      document.querySelectorAll('.reg-nav-item').forEach(function(n){n.classList.remove('active');});
+      navItem.classList.add('active');
+      document.getElementById(art.id).scrollIntoView({behavior:'smooth',block:'start'});
+    };
     nav.appendChild(navItem);
-    const sec=document.createElement('div');
-    sec.id=art.id;
-    sec.innerHTML=`<h2>${art.title}</h2>`;
-    const text=art.content.split('\n').filter(l=>l.trim());
-    text.forEach(line=>{
+    const sec=document.createElement('div');sec.id=art.id;
+    // Header row with edit button for admins
+    const hdrRow=document.createElement('div');
+    hdrRow.style.cssText='display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:8px;margin-top:'+(i===0?'0':'28px')+';margin-bottom:12px;';
+    const h2=document.createElement('h2');
+    h2.style.cssText='font-family:var(--font-head);font-size:22px;letter-spacing:1px;color:var(--yellow);margin:0;border:none;padding:0;';
+    h2.textContent=art.title;
+    hdrRow.appendChild(h2);
+    if(currentUser&&currentUser.role==='admin'){
+      const eb=document.createElement('button');eb.className='btn-icon';eb.title='Editar';
+      eb.innerHTML='<i class="fa fa-pen"></i>';
+      (function(aid){eb.onclick=function(){openRegEdit(aid);};})(art.id);
+      hdrRow.appendChild(eb);
+    }
+    sec.appendChild(hdrRow);
+    art.content.split('\n').forEach(function(line){
+      if(!line.trim())return;
+      const p=document.createElement('p');
       if(line.match(/^\d+\./)||line.startsWith('•')||line.startsWith('-')){
-        const p=document.createElement('p');p.style.paddingLeft='16px';p.textContent=line;sec.appendChild(p);
+        p.style.paddingLeft='16px';p.textContent=line;
       }else if(line.includes(':')){
-        const p=document.createElement('p');p.innerHTML='<strong>'+line+'</strong>';sec.appendChild(p);
+        p.innerHTML='<strong>'+line+'</strong>';
       }else{
-        const p=document.createElement('p');p.textContent=line;sec.appendChild(p);
+        p.textContent=line;
       }
+      sec.appendChild(p);
     });
     content.appendChild(sec);
   });
+}
+function openRegEdit(id){
+  const art=getRegData().find(function(a){return a.id===id;});if(!art)return;
+  document.getElementById('regEditId').value=id;
+  document.getElementById('regEditTitle').value=art.title;
+  document.getElementById('regEditContent').value=art.content;
+  openModal('modalRegEdit');
+}
+function saveRegEdit(){
+  const id=document.getElementById('regEditId').value;
+  const title=document.getElementById('regEditTitle').value.trim();
+  const cnt=document.getElementById('regEditContent').value;
+  if(!title){toast('Ingresa un título','error');return;}
+  reglamentoCustom=getRegData().map(function(a){
+    return a.id===id?{id:a.id,title:title,content:cnt}:a;
+  });
+  save('reglamentoCustom',reglamentoCustom);
+  loadReglamento();closeModal('modalRegEdit');
+  toast('Artículo actualizado');
 }
 
 function searchReglamento(val){
@@ -1717,7 +1989,10 @@ function renderStaff(data){
     const div=document.createElement('div');div.className='staff-card';
     const initials=s.name.split(' ').map(n=>n[0]).slice(0,2).join('').toUpperCase();
     const avatarHtml=s.photo?`<img src="${s.photo}" class="staff-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="${s.name}"><div class="staff-avatar-placeholder" style="display:none;">${initials}</div>`:`<div class="staff-avatar-placeholder">${initials}</div>`;
+    const coverHtml=s.cover?`<div style="width:calc(100% + 48px);margin:-24px -24px 16px -24px;height:88px;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0;"><img src="${s.cover}" style="width:100%;height:100%;object-fit:cover;"></div>`:'';
+    const extraHtml=s.extra?(s.extra.split('\n').map(l=>l?`<div class="staff-contact-item" style="align-items:flex-start;"><i class="fa fa-info-circle" style="margin-top:2px;"></i><span>${l}</span></div>`:'').join('')):'';
     div.innerHTML=`
+      ${coverHtml}
       ${avatarHtml}
       <div class="staff-name">${s.name}</div>
       <div class="staff-cargo">${s.cargo||''}</div>
@@ -1727,6 +2002,7 @@ function renderStaff(data){
         ${s.cell?`<div class="staff-contact-item"><i class="fa fa-mobile-alt"></i>${s.cell}</div>`:''}
         ${s.pc?`<div class="staff-contact-item"><i class="fa fa-desktop"></i>${s.pc}</div>`:''}
         ${s.line?`<div class="staff-contact-item"><i class="fa fa-phone"></i>${s.line}</div>`:''}
+        ${extraHtml}
       </div>
       ${currentUser&&currentUser.role==='admin'?`<div class="staff-card-actions"><button class="btn-icon" onclick="editStaff(${s.id})"><i class="fa fa-pen"></i></button><button class="btn-icon danger" onclick="deleteStaff(${s.id})"><i class="fa fa-trash"></i></button></div>`:''}
     `;
@@ -1742,16 +2018,48 @@ function filterStaff(val){
 }
 function saveStaff(){
   const id=document.getElementById('stId').value;
-  const obj={id:id?parseInt(id):Date.now(),name:document.getElementById('stName').value,cargo:document.getElementById('stCargo').value,op:document.getElementById('stOp').value,email:document.getElementById('stEmail').value,cell:document.getElementById('stCell').value,pc:document.getElementById('stPC').value,line:document.getElementById('stLine').value,photo:document.getElementById('stPhoto').value,extra:document.getElementById('stExtra').value};
+  const obj={
+    id:id?parseInt(id):Date.now(),
+    name:document.getElementById('stName').value,
+    cargo:document.getElementById('stCargo').value,
+    op:document.getElementById('stOp').value,
+    email:document.getElementById('stEmail').value,
+    cell:document.getElementById('stCell').value,
+    pc:document.getElementById('stPC').value,
+    line:document.getElementById('stLine').value,
+    photo:document.getElementById('stPhoto').value||'',
+    cover:document.getElementById('stCover').value||'',
+    extra:document.getElementById('stExtra').value||''
+  };
   if(id)staff=staff.map(s=>s.id===obj.id?obj:s);else staff.push(obj);
   save('staff',staff);renderStaff();updateStats();closeModal('modalStaff');
-  resetModal(['stId','stName','stCargo','stOp','stEmail','stCell','stPC','stLine','stPhoto','stExtra']);
+  resetModal(['stId','stName','stCargo','stOp','stEmail','stCell','stPC','stLine','stPhoto','stCover','stExtra']);
+  // reset photo previews
+  const pp=document.getElementById('stPhotoPreview');if(pp){pp.src='';pp.style.display='none';}
+  const ph=document.getElementById('stPhotoPlaceholder');if(ph)ph.style.display='flex';
+  const cp=document.getElementById('stCoverPreview');if(cp){cp.src='';cp.style.display='none';}
   toast(id?'Colaborador actualizado':'Colaborador agregado');
 }
 function editStaff(id){
   const s=staff.find(x=>x.id===id);if(!s)return;
-  ['Id','Name','Cargo','Op','Email','Cell','PC','Line','Photo','Extra'].forEach(k=>document.getElementById('st'+k).value=s[k.toLowerCase()]||s[k]||'');
   document.getElementById('stId').value=s.id;
+  document.getElementById('stName').value=s.name||'';
+  document.getElementById('stCargo').value=s.cargo||'';
+  document.getElementById('stOp').value=s.op||'';
+  document.getElementById('stEmail').value=s.email||'';
+  document.getElementById('stCell').value=s.cell||'';
+  document.getElementById('stPC').value=s.pc||'';
+  document.getElementById('stLine').value=s.line||'';
+  document.getElementById('stPhoto').value=s.photo||'';
+  document.getElementById('stCover').value=s.cover||'';
+  document.getElementById('stExtra').value=s.extra||'';
+  // photo preview
+  const pp=document.getElementById('stPhotoPreview'),ph=document.getElementById('stPhotoPlaceholder');
+  if(s.photo){pp.src=s.photo;pp.style.display='block';if(ph)ph.style.display='none';}
+  else{pp.style.display='none';if(ph)ph.style.display='flex';}
+  // cover preview
+  const cp=document.getElementById('stCoverPreview');
+  if(cp){if(s.cover){cp.src=s.cover;cp.style.display='block';}else{cp.style.display='none';}}
   openModal('modalStaff');
 }
 function deleteStaff(id){confirmDelete('¿Eliminar este colaborador?',()=>{staff=staff.filter(s=>s.id!==id);save('staff',staff);renderStaff();updateStats();toast('Colaborador eliminado');});}
@@ -1825,17 +2133,21 @@ function renderFechas(data){
     const thisYear=new Date(now.getFullYear(),fd.getMonth(),fd.getDate());
     if(thisYear<now)thisYear.setFullYear(now.getFullYear()+1);
     const diff=Math.ceil((thisYear-now)/(1000*60*60*24));
+    var shortDesc=f.desc?f.desc.substring(0,55)+(f.desc.length>55?'…':''):'';
     div.innerHTML=`
-      <div class="bday-icon" style="background:${colors[f.type]||'var(--yellow)'}22;">
+      <div class="bday-icon" style="background:${colors[f.type]||'var(--yellow)'}22;cursor:pointer;" onclick="expandFecha(${f.id})">
         <i class="fa ${icons[f.type]||'fa-calendar'}" style="color:${colors[f.type]||'var(--yellow)'};"></i>
       </div>
-      <div style="flex:1;">
+      <div style="flex:1;cursor:pointer;" onclick="expandFecha(${f.id})">
         <div class="bday-name">${f.name}</div>
         <div class="bday-date">${fd.toLocaleDateString('es-CO',{day:'2-digit',month:'long'})}</div>
         <div class="bday-days">${diff===0?'🎉 ¡HOY!':diff===1?'Mañana':'En '+diff+' días'}</div>
-        ${f.desc?`<div style="font-size:11px;color:var(--grey);margin-top:4px;">${f.desc}</div>`:''}
+        ${shortDesc?`<div style="font-size:11px;color:var(--grey);margin-top:4px;">${shortDesc}</div>`:''}
       </div>
-      ${currentUser&&currentUser.role==='admin'?`<div style="display:flex;flex-direction:column;gap:4px;"><button class="btn-icon" onclick="editFecha(${f.id})"><i class="fa fa-pen"></i></button><button class="btn-icon danger" onclick="deleteFecha(${f.id})"><i class="fa fa-trash"></i></button></div>`:''}
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <button class="btn-icon" onclick="expandFecha(${f.id})" title="Ver detalle"><i class="fa fa-expand-alt"></i></button>
+        ${currentUser&&currentUser.role==='admin'?`<button class="btn-icon" onclick="editFecha(${f.id})"><i class="fa fa-pen"></i></button><button class="btn-icon danger" onclick="deleteFecha(${f.id})"><i class="fa fa-trash"></i></button>`:''}
+      </div>
     `;
     grid.appendChild(div);
   });
@@ -1891,29 +2203,84 @@ function renderUpcomingBdays(){
     const diff=Math.ceil((thisYear-now)/(1000*60*60*24));
     const icons={cumpleanos:'fa-birthday-cake',aniversario:'fa-star',evento:'fa-calendar-alt'};
     const div=document.createElement('div');div.className='bday-card';div.style.marginBottom='10px';
-    div.innerHTML=`<div class="bday-icon"><i class="fa ${icons[f.type]||'fa-calendar'}"></i></div><div><div class="bday-name">${f.name}</div><div class="bday-date">${fd.toLocaleDateString('es-CO',{day:'2-digit',month:'long'})}</div><div class="bday-days">${diff===0?'🎉 ¡HOY!':diff===1?'Mañana':'En '+diff+' días'}</div></div>`;
+    div.innerHTML=`<div class="bday-icon" style="cursor:pointer;" onclick="expandFecha(${f.id})"><i class="fa ${icons[f.type]||'fa-calendar'}"></i></div><div style="cursor:pointer;" onclick="expandFecha(${f.id})"><div class="bday-name">${f.name}</div><div class="bday-date">${fd.toLocaleDateString('es-CO',{day:'2-digit',month:'long'})}</div><div class="bday-days">${diff===0?'🎉 ¡HOY!':diff===1?'Mañana':'En '+diff+' días'}</div></div>`;
     container.appendChild(div);
   });
 }
 
 // ═══════════ CALENDAR ═══════════
+let calMonthOffset=0;
 function renderCalendar(){
-  const now=new Date();
+  const today=new Date();
+  const base=new Date(today.getFullYear(),today.getMonth()+calMonthOffset,1);
+  const yr=base.getFullYear(),mo=base.getMonth();
   const grid=document.getElementById('calGrid');
-  const monthNames=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-  document.getElementById('calMonthYear').textContent=monthNames[now.getMonth()]+' '+now.getFullYear();
+  const months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  document.getElementById('calMonthYear').textContent=months[mo]+' '+yr;
   grid.innerHTML='';
-  ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(d=>{const h=document.createElement('div');h.className='cal-day-header';h.textContent=d;grid.appendChild(h);});
-  const first=new Date(now.getFullYear(),now.getMonth(),1);
-  const last=new Date(now.getFullYear(),now.getMonth()+1,0);
-  let startDay=first.getDay()-1;if(startDay<0)startDay=6;
-  for(let i=0;i<startDay;i++){const d=document.createElement('div');d.className='cal-day other-month';grid.appendChild(d);}
+  ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(d=>{
+    const h=document.createElement('div');h.className='cal-day-header';h.textContent=d;grid.appendChild(h);
+  });
+  const first=new Date(yr,mo,1),last=new Date(yr,mo+1,0);
+  let sd=first.getDay()-1;if(sd<0)sd=6;
+  for(let i=0;i<sd;i++){const d=document.createElement('div');d.className='cal-day other-month';grid.appendChild(d);}
   for(let i=1;i<=last.getDate();i++){
-    const d=document.createElement('div');d.className='cal-day'+(i===now.getDate()?' today':'');
-    const bdaysToday=fechas.filter(f=>{const fd=new Date(f.date+'T00:00:00');return fd.getDate()===i&&fd.getMonth()===now.getMonth();});
-    d.innerHTML=`<div class="day-num">${i}</div>${bdaysToday.length?'<div class="event-dot"></div>':''}`;
-    grid.appendChild(d);
+    const dateStr=yr+'-'+String(mo+1).padStart(2,'0')+'-'+String(i).padStart(2,'0');
+    const isToday=i===today.getDate()&&mo===today.getMonth()&&yr===today.getFullYear();
+    const cell=document.createElement('div');
+    cell.className='cal-day'+(isToday?' today':'');
+    // Cumpleaños ese día
+    const bdayList=fechas.filter(f=>{const fd=new Date(f.date+'T00:00:00');return fd.getDate()===i&&fd.getMonth()===mo;});
+    // Descansos ese día
+    const descList=descansos.filter(dc=>dc.start<=dateStr&&dc.end>=dateStr);
+    let inner='<div class="day-num">'+i+'</div><div class="cal-dots">';
+    if(bdayList.length) inner+='<span class="event-dot" style="width:6px;height:6px;border-radius:50%;background:var(--yellow);display:inline-block;margin:1px;"></span>';
+    descList.forEach(function(dc){
+      var c=dc.type==='rest'?'var(--yellow)':'#22dd54';
+      var l=dc.type==='rest'?'D':'T';
+      inner+='<span class="cal-event-pill" style="background:'+(dc.type==='rest'?'rgba(245,196,0,0.2)':'rgba(34,221,84,0.2)')+';color:'+c+';border:1px solid '+(dc.type==='rest'?'rgba(245,196,0,0.4)':'rgba(34,221,84,0.4)')+';">'+l+'</span>';
+    });
+    inner+='</div>';
+    cell.innerHTML=inner;
+    if(bdayList.length||descList.length){
+      cell.style.cursor='pointer';
+      (function(b,d,ds){
+        cell.onclick=function(){showCalDay(ds,b,d);};
+      })(bdayList,descList,dateStr);
+    }
+    grid.appendChild(cell);
   }
+}
+function showCalDay(dateStr,bdays,descs){
+  var date=new Date(dateStr+'T00:00:00');
+  var label=date.toLocaleDateString('es-CO',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
+  var html='<div style="font-weight:700;font-size:14px;color:var(--yellow);margin-bottom:14px;text-transform:capitalize;">'+label+'</div>';
+  if(bdays.length){
+    html+='<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--grey);margin-bottom:8px;">FECHAS ESPECIALES</div>';
+    var icons2={cumpleanos:'🎂',aniversario:'⭐',evento:'📅'};
+    bdays.forEach(function(b){
+      html+='<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--black3);border-radius:8px;margin-bottom:6px;">';
+      html+='<span style="font-size:20px;">'+(icons2[b.type]||'📅')+'</span>';
+      html+='<div><div style="font-size:13px;font-weight:600;">'+b.name+'</div>';
+      if(b.desc)html+='<div style="font-size:11px;color:var(--grey);">'+b.desc+'</div>';
+      html+='</div></div>';
+    });
+  }
+  if(descs.length){
+    html+='<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--grey);margin:'+(bdays.length?'12':'0')+'px 0 8px;">PROGRAMACIÓN</div>';
+    descs.forEach(function(dc){
+      var c=dc.type==='rest'?'var(--yellow)':'#22dd54';
+      var tipo=dc.type==='rest'?'Descanso':'Trabajo';
+      html+='<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--black3);border-radius:8px;margin-bottom:6px;">';
+      html+='<span style="width:10px;height:10px;border-radius:50%;background:'+c+';flex-shrink:0;"></span>';
+      html+='<div><div style="font-size:13px;font-weight:600;">'+dc.person+'</div>';
+      html+='<div style="font-size:11px;color:'+c+';">'+tipo+'</div>';
+      if(dc.notes)html+='<div style="font-size:11px;color:var(--grey);">'+dc.notes+'</div>';
+      html+='</div></div>';
+    });
+  }
+  document.getElementById('calDayContent').innerHTML=html;
+  openModal('modalCalDay');
 }
 
 // ═══════════ FILTERS ═══════════
@@ -1955,10 +2322,271 @@ function renderAllSections(){
   renderStaff();renderFechas();
 }
 
+
+// ═══════════ PHOTO UPLOAD HELPER ═══════════
+function previewPhoto(input, previewId, placeholderId, hiddenId){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var prev=document.getElementById(previewId);
+    if(prev){prev.src=e.target.result;prev.style.display='block';}
+    if(placeholderId){var ph=document.getElementById(placeholderId);if(ph)ph.style.display='none';}
+    var hid=document.getElementById(hiddenId);if(hid)hid.value=e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ═══════════ HSQ FIXED LINKS ═══════════
+var hsqFixedLinks=load('hsqFixedLinks',{
+  preop:{url:'https://docs.google.com/forms/d/e/1FAIpQLSf3rosI_g_xERGgk2q7lqjGR621-zmHBjIETlEqOcrEP2enxA/viewform',title:'Preoperacional',desc:'Registro preoperacional'},
+  limpieza:{url:'https://forms.gle/YeqaDuqV9kNzoEDx5',title:'Lavado y Desinfección de Motos',desc:'Registro de limpieza y desinfección'}
+});
+function initHsqFixed(){
+  var isAdmin=currentUser&&currentUser.role==='admin';
+  var bP=document.getElementById('btnEditPreop');var bL=document.getElementById('btnEditLimpieza');
+  if(bP)bP.style.display=isAdmin?'flex':'none';
+  if(bL)bL.style.display=isAdmin?'flex':'none';
+  var dP=document.getElementById('hsqDesc_preop');var dL=document.getElementById('hsqDesc_limpieza');
+  if(dP)dP.textContent=hsqFixedLinks.preop.desc||'Registro preoperacional';
+  if(dL)dL.textContent=hsqFixedLinks.limpieza.desc||'Registro de limpieza y desinfección';
+}
+function openHsqFixed(key){
+  var lnk=hsqFixedLinks[key];
+  if(lnk&&lnk.url)window.open(lnk.url,'_blank');
+  else toast('Sin URL configurada','error');
+}
+function editHsqFixed(key){
+  var lnk=hsqFixedLinks[key];
+  document.getElementById('hsqLinkKey').value=key;
+  document.getElementById('hsqLinkTitle').value=lnk.title||'';
+  document.getElementById('hsqLinkUrl').value=lnk.url||'';
+  document.getElementById('hsqLinkDesc').value=lnk.desc||'';
+  openModal('modalHsqLink');
+}
+function saveHsqFixed(){
+  var key=document.getElementById('hsqLinkKey').value;
+  hsqFixedLinks[key]={
+    title:document.getElementById('hsqLinkTitle').value,
+    url:document.getElementById('hsqLinkUrl').value,
+    desc:document.getElementById('hsqLinkDesc').value
+  };
+  save('hsqFixedLinks',hsqFixedLinks);
+  initHsqFixed();closeModal('modalHsqLink');
+  toast('Link actualizado');
+}
+
+// ═══════════ FECHA EXPANDIR ═══════════
+function expandFecha(id){
+  var f=fechas.find(function(x){return x.id===id;});if(!f)return;
+  var fd=new Date(f.date+'T00:00:00');
+  var now=new Date();
+  var ty=new Date(now.getFullYear(),fd.getMonth(),fd.getDate());
+  if(ty<now)ty.setFullYear(now.getFullYear()+1);
+  var diff=Math.ceil((ty-now)/(1000*60*60*24));
+  var icons2={cumpleanos:'🎂',aniversario:'⭐',evento:'📅'};
+  var clrs={cumpleanos:'var(--yellow)',aniversario:'#c44dff',evento:'#4d9fff'};
+  var typeLabel={cumpleanos:'CUMPLEAÑOS',aniversario:'ANIVERSARIO',evento:'EVENTO'};
+  document.getElementById('fechaDetailTitle').textContent=typeLabel[f.type]||'FECHA';
+  var diffLabel=diff===0?'🎉 ¡ES HOY!':diff===1?'Mañana':'En '+diff+' días';
+  document.getElementById('fechaDetailContent').innerHTML=
+    '<div style="text-align:center;padding:20px 0 10px;">'+
+    '<div style="font-size:52px;margin-bottom:12px;">'+(icons2[f.type]||'📅')+'</div>'+
+    '<div style="font-size:20px;font-weight:700;color:var(--white);margin-bottom:8px;">'+f.name+'</div>'+
+    '<div style="font-size:14px;color:'+(clrs[f.type]||'var(--yellow)')+';font-weight:600;margin-bottom:10px;">'+fd.toLocaleDateString('es-CO',{day:'2-digit',month:'long',year:'numeric'})+'</div>'+
+    '<div style="display:inline-block;background:'+(clrs[f.type]||'var(--yellow)')+'22;border:1px solid '+(clrs[f.type]||'var(--yellow)')+'55;border-radius:20px;padding:6px 18px;font-size:13px;font-weight:700;color:'+(clrs[f.type]||'var(--yellow)')+';">'+diffLabel+'</div>'+
+    (f.desc?'<div style="margin-top:18px;padding:14px;background:var(--black3);border-radius:var(--radius-sm);text-align:left;font-size:13px;color:var(--white2);line-height:1.7;white-space:pre-wrap;">'+f.desc+'</div>':'')+
+    '</div>';
+  openModal('modalFechaDetail');
+}
+
+// ═══════════ IA REGLAMENTO ═══════════
+function iaAddMsg(role,text){
+  var box=document.getElementById('iaMessages');
+  var wrap=document.createElement('div');
+  wrap.className=role==='user'?'ia-msg-user':'ia-msg-bot';
+  var bubble=document.createElement('div');
+  bubble.className=role==='user'?'ia-bubble-user':'ia-bubble-bot';
+  bubble.textContent=text;
+  wrap.appendChild(bubble);box.appendChild(wrap);
+  box.scrollTop=box.scrollHeight;
+}
+function iaAddTyping(){
+  var box=document.getElementById('iaMessages');
+  var wrap=document.createElement('div');wrap.className='ia-msg-bot';wrap.id='iaTyping';
+  wrap.innerHTML='<div class="ia-bubble-bot" style="padding:10px 14px;"><span style="display:inline-flex;gap:5px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--yellow);animation:blink 1s infinite;display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--yellow);animation:blink 1s infinite .25s;display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--yellow);animation:blink 1s infinite .5s;display:inline-block;"></span></span></div>';
+  box.appendChild(wrap);box.scrollTop=box.scrollHeight;
+}
+function iaRemoveTyping(){var t=document.getElementById('iaTyping');if(t)t.remove();}
+async function askIA(){
+  var input=document.getElementById('iaInput');
+  var q=input.value.trim();if(!q)return;
+  input.value='';
+  iaAddMsg('user',q);iaAddTyping();
+  document.getElementById('iaSendBtn').disabled=true;
+  var regText=getRegData().map(function(a){return a.title+'\n'+a.content;}).join('\n\n');
+  try{
+    var resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:800,
+        system:'Eres el asistente de Reglamento Interno de QUICK. Responde preguntas usando SOLO la información del siguiente reglamento. Cita el artículo específico. Responde en español, claro y directo.\n\nREGLAMENTO:\n'+regText,
+        messages:[{role:'user',content:q}]
+      })
+    });
+    iaRemoveTyping();
+    if(resp.ok){
+      var d=await resp.json();
+      var txt=d.content&&d.content[0]?d.content[0].text:'Sin respuesta disponible.';
+      iaAddMsg('assistant',txt);
+    }else{iaAddMsg('assistant',iaLocalSearch(q));}
+  }catch(e){iaRemoveTyping();iaAddMsg('assistant',iaLocalSearch(q));}
+  document.getElementById('iaSendBtn').disabled=false;
+}
+function iaLocalSearch(q){
+  var kws=q.toLowerCase().split(/\s+/).filter(function(w){return w.length>3;});
+  var data=getRegData();
+  var hits=data.filter(function(art){
+    return kws.some(function(k){return art.content.toLowerCase().includes(k)||art.title.toLowerCase().includes(k);});
+  });
+  if(!hits.length)return 'No encontré información específica en el Reglamento Interno de QUICK relacionada con tu consulta. Consulta el documento completo o al área de Recursos Humanos.';
+  var resp='Basado en el Reglamento Interno de QUICK:\n\n';
+  hits.slice(0,2).forEach(function(art){
+    resp+='📋 '+art.title+'\n';
+    var lines=art.content.split('\n').filter(function(l){return l.trim();});
+    var rel=lines.filter(function(l){return kws.some(function(k){return l.toLowerCase().includes(k);});}).slice(0,4);
+    resp+=(rel.length?rel:lines.slice(0,3)).join('\n');
+    resp+='\n\n';
+  });
+  return resp.trim();
+}
+
+// ═══════════ CONTRASEÑAS ═══════════
+function changePassword(user){
+  var capUser=user.charAt(0).toUpperCase()+user.slice(1);
+  var p=document.getElementById('cfgPass'+capUser).value;
+  var c=document.getElementById('cfgPass'+capUser+'C').value;
+  if(!p||p.length<4){toast('Mínimo 4 caracteres','error');return;}
+  if(p!==c){toast('Las contraseñas no coinciden','error');return;}
+  var cp=load('customPasses',{});cp[user]=p;save('customPasses',cp);
+  document.getElementById('cfgPass'+capUser).value='';
+  document.getElementById('cfgPass'+capUser+'C').value='';
+  toast('Contraseña de '+USERS[user].name+' actualizada');
+}
+
+// ═══════════ ALERTAS ═══════════
+var alertEmails=load('alertEmails',[]);
+function renderAlertEmails(){
+  var c=document.getElementById('cfgEmailList');if(!c)return;
+  c.innerHTML='';
+  if(!alertEmails.length){c.innerHTML='<div style="font-size:12px;color:var(--grey);padding:4px 0;">Sin destinatarios configurados</div>';return;}
+  alertEmails.forEach(function(email,i){
+    var d=document.createElement('div');
+    d.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:var(--black);border-radius:6px;border:1px solid var(--border);margin-bottom:6px;';
+    d.innerHTML='<span style="font-size:12px;"><i class="fa fa-envelope" style="color:var(--yellow);margin-right:7px;"></i>'+email+'</span>';
+    var btn=document.createElement('button');btn.className='btn-icon danger';btn.innerHTML='<i class="fa fa-times"></i>';
+    (function(idx){btn.onclick=function(){alertEmails.splice(idx,1);save('alertEmails',alertEmails);renderAlertEmails();toast('Correo eliminado');};})(i);
+    d.appendChild(btn);c.appendChild(d);
+  });
+}
+function addAlertEmail(){
+  var input=document.getElementById('cfgNewEmail');
+  var email=input.value.trim();
+  if(!email||!email.includes('@')){toast('Correo inválido','error');return;}
+  if(alertEmails.includes(email)){toast('Ya registrado','error');return;}
+  alertEmails.push(email);save('alertEmails',alertEmails);input.value='';renderAlertEmails();
+  toast('Destinatario agregado');
+}
+function toggleCustomMsg(val){
+  var g=document.getElementById('cfgCustomMsgGroup');if(g)g.style.display=val==='custom'?'block':'none';
+}
+function sendAlert(){
+  var type=document.getElementById('cfgAlertType').value;
+  var now=new Date();
+  var msg='';
+  if(type==='cumpleanos'){
+    var upcoming=fechas.filter(function(f){
+      var fd=new Date(f.date+'T00:00:00');
+      var ty=new Date(now.getFullYear(),fd.getMonth(),fd.getDate());
+      if(ty<now)ty.setFullYear(now.getFullYear()+1);
+      return Math.ceil((ty-now)/(1000*60*60*24))<=30;
+    });
+    msg=upcoming.length?'🎂 Cumpleaños próximos:\n'+upcoming.map(function(f){return '• '+f.name;}).join('\n'):'Sin cumpleaños próximos en 30 días.';
+  }else if(type==='capacitacion'){
+    var caps=hsqItems.filter(function(h){return h.type==='capacitacion';});
+    msg=caps.length?'📚 Capacitaciones pendientes:\n'+caps.map(function(h){return '• '+h.title+(h.date?' – '+h.date:'');}).join('\n'):'Sin capacitaciones registradas.';
+  }else{
+    msg=document.getElementById('cfgCustomMsg').value.trim();
+    if(!msg){toast('Escribe el mensaje','error');return;}
+  }
+  toast('Alerta enviada a '+alertEmails.length+' destinatario(s)');
+  var hist=load('alertHistory',[]);
+  hist.unshift({date:new Date().toISOString(),type:type,msg:msg,n:alertEmails.length});
+  save('alertHistory',hist.slice(0,20));
+}
+function renderUpcomingAlerts(){
+  var c=document.getElementById('cfgUpcomingAlerts');if(!c)return;
+  c.innerHTML='';
+  var now=new Date(),alerts=[];
+  fechas.forEach(function(f){
+    var fd=new Date(f.date+'T00:00:00');
+    var ty=new Date(now.getFullYear(),fd.getMonth(),fd.getDate());
+    if(ty<now)ty.setFullYear(now.getFullYear()+1);
+    var diff=Math.ceil((ty-now)/(1000*60*60*24));
+    if(diff<=30)alerts.push({icon:f.type==='cumpleanos'?'🎂':'⭐',label:f.name+(f.type==='cumpleanos'?' – Cumpleaños':' – Aniversario'),days:diff});
+  });
+  hsqItems.filter(function(h){return h.type==='capacitacion'&&h.date;}).forEach(function(h){
+    var hd=new Date(h.date+'T00:00:00');var diff=Math.ceil((hd-now)/(1000*60*60*24));
+    if(diff>=0&&diff<=30)alerts.push({icon:'📚',label:h.title+' – Capacitación',days:diff});
+  });
+  alerts.sort(function(a,b){return a.days-b.days;});
+  if(!alerts.length){c.innerHTML='<div style="font-size:12px;color:var(--grey);">Sin alertas en los próximos 30 días</div>';return;}
+  alerts.slice(0,6).forEach(function(a){
+    var d=document.createElement('div');
+    d.style.cssText='display:flex;align-items:center;gap:10px;padding:7px 10px;background:var(--black);border-radius:6px;border:1px solid var(--border);margin-bottom:6px;';
+    var dayLabel=a.days===0?'¡HOY!':a.days===1?'Mañana':'En '+a.days+' días';
+    d.innerHTML='<span style="font-size:18px;">'+a.icon+'</span><div style="flex:1;"><div style="font-size:12px;font-weight:600;">'+a.label+'</div><div style="font-size:11px;color:var(--yellow);">'+dayLabel+'</div></div>';
+    c.appendChild(d);
+  });
+}
+
+// ═══════════ PATCH doLogin para contraseñas personalizadas ═══════════
+var _origDoLogin=doLogin;
+doLogin=function(){
+  var u=document.getElementById('loginUser').value.trim();
+  var p=document.getElementById('loginPass').value;
+  var err=document.getElementById('loginError');
+  var cp=load('customPasses',{});
+  var validPass=cp[u]||USERS[u]&&USERS[u].pass;
+  if(USERS[u]&&validPass===p){
+    currentUser={user:u,role:USERS[u].role,name:USERS[u].name};
+    localStorage.setItem('quickUser',JSON.stringify(currentUser));
+    localStorage.setItem('quickLoginTime',Date.now());
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('app').classList.add('active');
+    initApp();
+  }else{
+    err.style.display='block';setTimeout(function(){err.style.display='none';},3000);
+  }
+};
+
+// ═══════════ PATCH initApp ═══════════
+var _origInitApp=initApp;
+initApp=function(){
+  _origInitApp();
+  initHsqFixed();
+  renderAlertEmails();
+  renderUpcomingAlerts();
+  var navCfg=document.getElementById('navConfig');
+  if(navCfg)navCfg.style.display=(currentUser&&currentUser.role==='admin')?'flex':'none';
+};
+
 // ═══════════ INIT ON LOAD ═══════════
-window.onload=()=>{
-  // Show login
+window.onload=function(){
   document.getElementById('loginScreen').style.display='flex';
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Enter'&&document.getElementById('loginScreen').style.display!=='none')doLogin();
+  });
 };
 </script>
 </body>
